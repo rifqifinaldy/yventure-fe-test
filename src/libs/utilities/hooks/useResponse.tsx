@@ -20,8 +20,6 @@ const useResponse = () => {
         500: "error",
       };
 
-      console.log("ERROR CODE", errorCode);
-
       const type = typeMap[errorCode] || "error";
 
       showToast(message || "An unexpected error occurred.", { type });

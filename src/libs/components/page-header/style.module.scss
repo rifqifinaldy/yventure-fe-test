@@ -1,0 +1,22 @@
+@use "./theme.scss" as *;
+
+.wrapper {
+    margin-bottom: 18px;
+    width: 100%;
+}
+
+.title {
+    color: $green;
+}
+
+.subtitle {
+    color: $gray;
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.divider {
+    margin-top: 10px;
+    height: 1px;
+    background-color: $gray;
+}

@@ -1,5 +1,6 @@
 "use client";
 
+import PageTitle from "@app/libs/components/page-header";
 import useTodos from "@app/libs/utilities/hooks/useTodos";
 import React, { useEffect } from "react";
 import {} from "react-toastify";
@@ -24,7 +25,7 @@ const TodosPage: React.FC = () => {
   return (
     <div>
       <form onSubmit={(e) => handleSubmit(e)}>
-        <h2>Create new Task</h2>
+        <PageTitle title="Todo List" subtitle="Create New Task" />
         <input id="task" type="text" />
         <div>
           <button type="submit">
