@@ -19,7 +19,18 @@
       }
     ],
     "paths": {
-      "@yventures/*": ["./src/*"]
+      "@app/*": ["./src/*"],
+      "@themes/*": ["./src/theme/*"],
+      "@axios/*": ["./src/libs/axios/*"],
+      // /libs Path
+      "@components/*": ["./src/libs/components/*"],
+      "@page-modules/*": ["./src/libs/page-modules/*"],
+      "@redux/*": ["./src/libs/redux/*"],
+      "@types/*": ["./src/libs/types/*"],
+      // libs/utilities path
+      "@utilities-constant/*": ["./src/libs/utilities/constant/*"],
+      "@utilities-helper/*": ["./src/libs/utilities/helper/*"],
+      "@utilities-hooks/*": ["./src/libs/utilities/hooks/*"]
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],

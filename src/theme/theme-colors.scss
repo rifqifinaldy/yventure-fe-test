@@ -1,0 +1,19 @@
+$green: #1db954;
+$yellow: #f6cd61;
+$red: #69202f;
+$blue: #118ab2;
+$gray: #b3b3b3;
+$dark: #121212;
+$light: #fbfbfb;
+
+:export {
+    color: {
+        green: $green;
+        yellow: $yellow;
+        red: $red;
+        blue: $blue;
+        gray: $gray;
+        dark: $dark;
+        light: $light;
+    }
+}
