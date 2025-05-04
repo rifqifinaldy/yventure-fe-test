@@ -1,22 +1,25 @@
 "use client";
 
 import useTodos from "@app/libs/utilities/hooks/useTodos";
-import React from "react";
+import React, { useEffect } from "react";
 import {} from "react-toastify";
 
 const TodosPage: React.FC = () => {
-  const { onAdd, createState } = useTodos();
+  const { onAdd, getList, create, list } = useTodos();
 
-  const { pending } = createState;
+  const { pending: pendingCreate } = create;
+  const { pending: pendingFetch, data: todos, success: successFetch } = list;
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    onAdd(e, {
-      id: "ID",
-      task: "ss",
-      isCompleted: false,
+    onAdd({
+      task: "sseese",
     });
   };
+
+  useEffect(() => {
+    getList();
+  }, [getList]);
 
   return (
     <div>
@@ -24,9 +27,20 @@ const TodosPage: React.FC = () => {
         <h2>Create new Task</h2>
         <input id="task" type="text" />
         <div>
-          <button type="submit">{pending ? "Loading" : "Add to List"}</button>
+          <button type="submit">
+            {pendingCreate ? "Loading" : "Add to List"}
+          </button>
         </div>
       </form>
+      {/* List of Todos */}
+      {successFetch &&
+        todos?.map((todo) => {
+          return <h1 key={todo.id}>{todo.task}</h1>;
+        })}
+      {/* List of todos loading state */}
+      {pendingFetch && <h1>Loading Todo List</h1>}
+      {/* Empty State */}
+      {successFetch && todos?.length <= 0 && <h1>Empty State</h1>}
     </div>
   );
 };

@@ -2,11 +2,13 @@
 
 import {
   REQUEST_TODO_ADD,
+  REQUEST_TODO_LIST,
   TODOS_SELECTOR_COLLECTION,
 } from "@app/libs/redux/todos";
 import { useAppDispatch, useAppSelector } from "@app/libs/redux/useRedux";
-import { ITodo } from "@app/libs/types/todo.types";
+import { ITodoPayload } from "@app/libs/types/todo.types";
 import useResponse from "./useResponse";
+import { useCallback } from "react";
 
 const useTodos = () => {
   const dispatch = useAppDispatch();
@@ -14,21 +16,31 @@ const useTodos = () => {
 
   const { handleSuccess, handleError } = useResponse();
 
-  const onAdd = (e: React.FormEvent<HTMLFormElement>, todo: ITodo) => {
-    e.preventDefault();
-    dispatch(REQUEST_TODO_ADD(todo)).then((res) => {
-      console.log("FULLFILLED", res.payload);
-      if (res.meta.requestStatus === "fulfilled") {
-        handleSuccess(res.payload.message);
-      } else if (res.meta.requestStatus === "rejected") {
+  const onAdd = useCallback(
+    (payload: ITodoPayload) => {
+      dispatch(REQUEST_TODO_ADD(payload)).then((res) => {
+        if (res.meta.requestStatus === "fulfilled") {
+          handleSuccess(res.payload.message);
+        } else if (res.meta.requestStatus === "rejected") {
+          handleError(res.payload.status, res.payload.response.message);
+        }
+      });
+    },
+    [dispatch, handleError, handleSuccess]
+  );
+
+  const getList = useCallback(() => {
+    dispatch(REQUEST_TODO_LIST()).then((res) => {
+      if (res.meta.requestStatus === "rejected") {
         handleError(res.payload.status, res.payload.response.message);
       }
     });
-  };
+  }, [dispatch, handleError]);
 
   return {
     ...state,
     onAdd,
+    getList,
   };
 };
 

@@ -3,3 +3,5 @@ export interface ITodo {
   task: string | undefined;
   isCompleted?: boolean | null;
 }
+
+export type ITodoPayload = Omit<ITodo, "id">;

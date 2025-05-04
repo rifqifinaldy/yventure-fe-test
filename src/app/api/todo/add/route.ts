@@ -15,7 +15,11 @@ export async function POST(request: NextRequest) {
     return new NextResponse(
       JSON.stringify({
         message: "New Task has successfully added to your list",
-        data: requestBody,
+        data: {
+          ...requestBody,
+          id: Math.random().toString(),
+          isCompleted: false,
+        },
       }),
       {
         status: 200,
@@ -23,8 +27,7 @@ export async function POST(request: NextRequest) {
     );
   }
 
-  return new NextResponse(
-    JSON.stringify({ message: "Please specify your task is" }),
-    { status: 400 }
-  );
+  return new NextResponse(JSON.stringify({ message: "An Error has occured" }), {
+    status: 500,
+  });
 }
