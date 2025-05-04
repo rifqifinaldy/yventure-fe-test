@@ -1,5 +1,9 @@
+import TodosPage from "@app/libs/page-modules/todos";
+
 export default function Home() {
   return (
-    <div>Whereas disregard and contempt for human rights have resulted</div>
+    <div>
+      <TodosPage />
+    </div>
   );
 }
