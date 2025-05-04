@@ -6,20 +6,25 @@ export async function POST(request: NextRequest) {
 
   if (!requestBody.task) {
     return new NextResponse(
-      JSON.stringify({ name: "Please specify your task is" }),
+      JSON.stringify({ message: "Please specify your task is" }),
       { status: 400 }
     );
   }
 
-  console.log("REQUEST", requestBody.task);
+  if (requestBody.task) {
+    return new NextResponse(
+      JSON.stringify({
+        message: "New Task has successfully added to your list",
+        data: requestBody,
+      }),
+      {
+        status: 200,
+      }
+    );
+  }
 
   return new NextResponse(
-    JSON.stringify({
-      message: "New Task has successfully added to your list",
-      data: requestBody,
-    }),
-    {
-      status: 200,
-    }
+    JSON.stringify({ message: "Please specify your task is" }),
+    { status: 400 }
   );
 }

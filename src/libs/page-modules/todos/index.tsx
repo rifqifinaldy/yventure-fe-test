@@ -2,6 +2,7 @@
 
 import useTodos from "@app/libs/utilities/hooks/useTodos";
 import React from "react";
+import {} from "react-toastify";
 
 const TodosPage: React.FC = () => {
   const { onAdd, createState } = useTodos();
@@ -10,10 +11,9 @@ const TodosPage: React.FC = () => {
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    console.log("E", e);
     onAdd(e, {
       id: "ID",
-      task: "SOME TASK",
+      task: "ss",
       isCompleted: false,
     });
   };
@@ -22,13 +22,7 @@ const TodosPage: React.FC = () => {
     <div>
       <form onSubmit={(e) => handleSubmit(e)}>
         <h2>Create new Task</h2>
-        <input
-          id="task"
-          type="text"
-          required={true}
-          minLength={3}
-          maxLength={25}
-        />
+        <input id="task" type="text" />
         <div>
           <button type="submit">{pending ? "Loading" : "Add to List"}</button>
         </div>
