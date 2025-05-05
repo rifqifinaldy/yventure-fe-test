@@ -1,0 +1,28 @@
+@use "./theme.scss" as *;
+
+.empty_state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: $gray;
+  padding: 40px;
+  border-radius: 12px;
+  text-align: center;
+  gap: 16px;
+
+  .icon {
+    font-size: 48px;
+    color: $blue;
+  }
+
+  .message {
+    font-size: 18px;
+    color: $light;
+  }
+
+  .sub_message {
+    font-size: 14px;
+    color: $gray;
+  }
+}

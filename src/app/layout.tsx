@@ -25,7 +25,12 @@ export default function RootLayout({
     <html lang="en">
       <StoreProvider>
         <body className={`${ubuntu.className}`}>
-          <ToastContainer />
+          <ToastContainer
+            closeButton={false}
+            style={{
+              fontSize: "14px",
+            }}
+          />
           <Navbar />
           <div className="layout">{children}</div>
         </body>

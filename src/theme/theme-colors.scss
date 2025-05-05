@@ -1,6 +1,6 @@
 $green: #1db954;
 $yellow: #f6cd61;
-$red: #69202f;
+$red: #b92c49;
 $blue: #118ab2;
 $gray: #b3b3b3;
 $background: #121212;
@@ -8,13 +8,11 @@ $dark: #212121;
 $light: #fbfbfb;
 
 :export {
-    color: {
-        green: $green;
-        yellow: $yellow;
-        red: $red;
-        blue: $blue;
-        gray: $gray;
-        dark: $dark;
-        light: $light;
-    }
+    green: $green;
+    yellow: $yellow;
+    red: $red;
+    blue: $blue;
+    gray: $gray;
+    dark: $dark;
+    light: $light;
 }

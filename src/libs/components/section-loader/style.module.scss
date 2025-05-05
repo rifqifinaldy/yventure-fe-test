@@ -1,0 +1,19 @@
+@use "./theme.scss" as *;
+
+.page_loader {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: $gray;
+  padding: 40px;
+  border-radius: 12px;
+  text-align: center;
+  gap: 16px;
+
+  .message {
+    font-size: 18px;
+    color: $light;
+    color: $blue;
+  }
+}
