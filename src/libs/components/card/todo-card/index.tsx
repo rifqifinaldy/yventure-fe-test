@@ -27,10 +27,10 @@ const TodoCard: React.FC<Props> = ({
     : styles.card_wrapper;
 
   return (
-    <div className={wrapperStyles}>
+    <div className={wrapperStyles} data-testid="todo-card-wrapper">
       {isLoading && (
         <div className={styles.loading_overlay}>
-          <span className={styles.spinner}></span>
+          <span data-testid="loading-spinner" className={styles.spinner}></span>
         </div>
       )}
 
@@ -50,8 +50,11 @@ const TodoCard: React.FC<Props> = ({
         </div>
       </div>
       <div className={styles.action_wrapper}>
-        <AiFillDelete onClick={() => handleDelete(todo.id)} />
-        <AiFillEdit onClick={() => handleEdit(todo)} />
+        <AiFillDelete
+          data-testid="delete-icon"
+          onClick={() => handleDelete(todo.id)}
+        />
+        <AiFillEdit data-testid="edit-icon" onClick={() => handleEdit(todo)} />
       </div>
     </div>
   );
