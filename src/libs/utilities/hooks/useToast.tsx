@@ -9,7 +9,7 @@ const useToast = () => {
       position: "top-center",
       closeOnClick: true,
       hideProgressBar: false,
-      autoClose: 5000,
+      autoClose: 3000,
     }),
     []
   );

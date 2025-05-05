@@ -13,6 +13,7 @@ import TodoCard from "@app/libs/components/card/todo-card";
 import { ITodo } from "@app/libs/types/todo.types";
 import EmptyState from "@app/libs/components/empty-state";
 import PageLoader from "@app/libs/components/section-loader";
+import { today } from "@app/libs/utilities/helper/date.helper";
 
 const TodosPage: React.FC = () => {
   const [isEditing, setIsEditing] = useState(false);
@@ -31,17 +32,38 @@ const TodosPage: React.FC = () => {
     setValue,
     watch,
   } = methods;
-  const { onAdd, onDelete, getList, create, list } = useTodos();
+  const {
+    onAdd,
+    onDelete,
+    getList,
+    onUpdate,
+    create,
+    list,
+    delete: deleteState,
+    update: updateState,
+    loadingId,
+  } = useTodos();
 
   const { pending: pendingCreate } = create;
   const { pending: pendingFetch, data: todos, success: successFetch } = list;
+  const { pending: pendingDelete } = deleteState;
+  const { pending: pendingUpdate } = updateState;
+
+  const isLoading = pendingCreate || pendingFetch;
 
   const onSubmit = handleSubmit((data) => {
-    onAdd({ ...data, updatedAt: new Date().toDateString() });
+    const payload = { ...data, updatedAt: today };
+    if (isEditing) {
+      onUpdate({ ...payload, id: data.id as string });
+      setIsEditing(() => false);
+    } else {
+      onAdd(payload);
+    }
     reset();
   });
 
   const handleDelete = (id: string) => {
+    setValue("id", id);
     onDelete(id);
   };
 
@@ -50,6 +72,10 @@ const TodosPage: React.FC = () => {
     setValue("isCompleted", Boolean(data.isCompleted));
     setValue("id", data.id);
     setIsEditing(true);
+  };
+
+  const handleToggle = (data: ITodo) => {
+    onUpdate(data);
   };
 
   const handleCancel = () => {
@@ -102,22 +128,35 @@ const TodosPage: React.FC = () => {
         {/* Todos Section Wrapper */}
         <div className={styles.todos_section}>
           {/* List of Todos */}
-          {successFetch &&
+          {!isLoading &&
+            successFetch &&
             todos?.map((todo) => {
               return (
                 <TodoCard
                   handleDelete={handleDelete}
                   handleEdit={handleEdit}
+                  handleToggle={handleToggle}
                   isEditing={watch("id") === todo.id}
+                  isLoading={
+                    loadingId === todo.id && (pendingUpdate || pendingDelete)
+                  }
                   key={todo.id}
                   todo={todo}
                 />
               );
             })}
           {/* List of todos loading state */}
-          {pendingFetch && <PageLoader />}
+          {isLoading && (
+            <PageLoader
+              title={
+                pendingFetch
+                  ? "Fetching Your Todos Data"
+                  : "Updating Your Todo List"
+              }
+            />
+          )}
           {/* Empty State */}
-          {successFetch && todos?.length <= 0 && (
+          {!isLoading && successFetch && todos?.length <= 0 && (
             <EmptyState
               title="There's nothing here yet"
               subtitle="Please add some items to get started."

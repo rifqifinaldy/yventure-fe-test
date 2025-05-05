@@ -6,15 +6,19 @@ import React from "react";
 interface Props {
   todo: ITodo;
   isEditing: boolean;
+  isLoading: boolean;
   handleDelete: (id: string) => void;
   handleEdit: (data: ITodo) => void;
+  handleToggle: (data: ITodo) => void;
 }
 
 const TodoCard: React.FC<Props> = ({
   todo,
   isEditing,
+  isLoading,
   handleDelete,
   handleEdit,
+  handleToggle,
 }) => {
   const { task, isCompleted, updatedAt } = todo;
 
@@ -24,12 +28,20 @@ const TodoCard: React.FC<Props> = ({
 
   return (
     <div className={wrapperStyles}>
+      {isLoading && (
+        <div className={styles.loading_overlay}>
+          <span className={styles.spinner}></span>
+        </div>
+      )}
+
       <div className={styles.right_content_wrapper}>
         <div className={styles.checkbox_wrapper}>
           <input
             type="checkbox"
             checked={Boolean(isCompleted)}
-            onChange={() => handleEdit(todo)}
+            onChange={(e) =>
+              handleToggle({ ...todo, isCompleted: e.currentTarget.checked })
+            }
           />
         </div>
         <div className={styles.content_wrapper}>

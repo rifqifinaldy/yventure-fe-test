@@ -3,5 +3,6 @@ export const API_LOCAL = {
     ADD: "/todo/add",
     LIST: "/todo/list",
     DELETE: (id: string) => `/todo/delete/${id}`,
+    UPDATE: (id: string) => `/todo/update/${id}`,
   },
 };
