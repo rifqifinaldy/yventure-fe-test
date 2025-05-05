@@ -1,0 +1,62 @@
+@use "./theme.scss" as *;
+
+// Base spinner style
+.loading_spinner {
+  border-style: solid;
+  border-radius: 50%;
+  animation: spin 0.6s linear infinite;
+  display: inline-block;
+  margin-right: 8px;
+
+  // Default size
+  width: 1rem;
+  height: 1rem;
+  border-width: 2px;
+  border-color: $light transparent transparent transparent;
+}
+
+// Size variants
+.sm {
+  width: 0.75rem;
+  height: 0.75rem;
+  border-width: 2px;
+}
+
+.md {
+  width: 1rem;
+  height: 1rem;
+  border-width: 2px;
+}
+
+.lg {
+  width: 1.5rem;
+  height: 1.5rem;
+  border-width: 3px;
+}
+
+// Color variants
+.green {
+  border-color: $green transparent transparent transparent;
+}
+
+.blue {
+  border-color: $blue transparent transparent transparent;
+}
+
+.red {
+  border-color: $red transparent transparent transparent;
+}
+
+.black {
+  border-color: $background transparent transparent transparent;
+}
+
+.gray {
+  border-color: $gray transparent transparent transparent;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}

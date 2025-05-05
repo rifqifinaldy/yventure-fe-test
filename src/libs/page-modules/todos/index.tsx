@@ -8,6 +8,7 @@ import { FormProvider, useForm } from "react-hook-form";
 import styles from "./style.module.scss";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { validateTodo } from "./todos-form.validation";
+import Button from "@app/libs/components/button";
 
 const TodosPage: React.FC = () => {
   const methods = useForm({
@@ -19,6 +20,7 @@ const TodosPage: React.FC = () => {
   const {
     handleSubmit,
     formState: { errors },
+    reset,
   } = methods;
   const { onAdd, onDelete, getList, create, list } = useTodos();
 
@@ -27,6 +29,7 @@ const TodosPage: React.FC = () => {
 
   const onSubmit = handleSubmit((data) => {
     onAdd(data);
+    reset();
   });
 
   const handleDelete = (id: string) => {
@@ -53,10 +56,10 @@ const TodosPage: React.FC = () => {
             }}
             errorMessage={errors.task?.message}
           />
-          <div>
-            <button type="submit">
+          <div className="">
+            <Button type="submit" colorScheme="blue">
               {pendingCreate ? "Loading" : "Add to List"}
-            </button>
+            </Button>
           </div>
         </form>
       </FormProvider>

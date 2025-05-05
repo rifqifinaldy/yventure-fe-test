@@ -1,0 +1,54 @@
+@use "sass:color";
+@use "./theme.scss" as *;
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 22px;
+  font-size: 14px;
+  font-weight: 600;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  color: $light;
+
+  &:disabled {
+    background-color: color.adjust($gray, $lightness: -38%);
+    cursor: not-allowed;
+  }
+}
+
+.green {
+  background-color: $green;
+
+  &:hover:not(:disabled) {
+    background-color: color.adjust($green, $lightness: -8%);
+  }
+}
+
+.blue {
+  background-color: $blue;
+
+  &:hover:not(:disabled) {
+    background-color: color.adjust($blue, $lightness: 8%);
+  }
+}
+
+.red {
+  background-color: $red;
+
+  &:hover:not(:disabled) {
+    background-color: color.adjust($red, $lightness: 8%);
+  }
+}
+
+.yellow {
+  background-color: $yellow;
+  color: $dark;
+
+  &:hover:not(:disabled) {
+    background-color: color.adjust($yellow, $lightness: 8%);
+  }
+}
