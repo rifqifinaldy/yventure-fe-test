@@ -1,36 +1,54 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+## Y Ventures Entry Test - Rifqi Finaldy
 
-## Getting Started
+this web app bootstrapped with Next.js 15 application with a range of technologies and tools to enhance development and testing. deployed at [[https://yventure-fe-test.vercel.app//](https://yventure-fe-test.vercel.app)]
 
-First, run the development server:
+Installation
+To get started with this project locally, follow these steps:
+
+1. Clone the repository:
+
+```bash
+git clone https://github.com/rifqifinaldy/yventure-fe-test.git
+```
+
+2. Install dependencies:
+
+```bash
+npm install
+```
+
+3. Rename the environment file:
+
+```bash
+mv .env.example .env.local
+```
+
+4. Start the development server:
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Technologies Used
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- Next.js 15: This application is built using Next.js, a React framework that enables server-side rendering and static site generation.
+- API Routes: The APIs in this application are created using Next.js API routes, which handle requests and responses directly in the frontend.
+- SASS: For styling and UI components, I used SASS.
+- State Management:
 
-## Learn More
+1. Custom Hooks: Used for simple and global state management across the application.
+2. Redux Toolkit: Integrated for more complex state management scenarios, providing a robust and scalable state container.
 
-To learn more about Next.js, take a look at the following resources:
+## Project Structure
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- /app: Contains the Next.js pages & route (App Router)
+- /libs/components: Reusable React components that are used globally (unit test also included inside this folder).
+- /libs/config: Configured constant data and integration setup.
+- /libs/types: Configured data interface, type, enum that can be used globally.
+- /libs/redux: Redux toolkit reducer, action, selector and store configuration.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Contact
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+If you have any questions or feedback, feel free to reach out at [finaldyrifqi@gmail.com].
