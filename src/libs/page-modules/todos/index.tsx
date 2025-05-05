@@ -6,7 +6,7 @@ import React, { useEffect } from "react";
 import {} from "react-toastify";
 
 const TodosPage: React.FC = () => {
-  const { onAdd, getList, create, list } = useTodos();
+  const { onAdd, onDelete, getList, create, list } = useTodos();
 
   const { pending: pendingCreate } = create;
   const { pending: pendingFetch, data: todos, success: successFetch } = list;
@@ -16,6 +16,10 @@ const TodosPage: React.FC = () => {
     onAdd({
       task: "sseese",
     });
+  };
+
+  const handleDelete = (id: string) => {
+    onDelete(id);
   };
 
   useEffect(() => {
@@ -36,7 +40,12 @@ const TodosPage: React.FC = () => {
       {/* List of Todos */}
       {successFetch &&
         todos?.map((todo) => {
-          return <h1 key={todo.id}>{todo.task}</h1>;
+          return (
+            <div key={todo.id}>
+              <h1>{todo.task}</h1>
+              <button onClick={() => handleDelete(todo.id)}>Delete</button>
+            </div>
+          );
         })}
       {/* List of todos loading state */}
       {pendingFetch && <h1>Loading Todo List</h1>}

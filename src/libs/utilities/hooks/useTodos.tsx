@@ -2,6 +2,7 @@
 
 import {
   REQUEST_TODO_ADD,
+  REQUEST_TODO_DELETE,
   REQUEST_TODO_LIST,
   TODOS_SELECTOR_COLLECTION,
 } from "@app/libs/redux/todos";
@@ -29,6 +30,19 @@ const useTodos = () => {
     [dispatch, handleError, handleSuccess]
   );
 
+  const onDelete = useCallback(
+    (id: string) => {
+      dispatch(REQUEST_TODO_DELETE(id)).then((res) => {
+        if (res.meta.requestStatus === "fulfilled") {
+          handleSuccess(res.payload.message);
+        } else if (res.meta.requestStatus === "rejected") {
+          handleError(res.payload.status, res.payload.response.message);
+        }
+      });
+    },
+    [dispatch, handleError, handleSuccess]
+  );
+
   const getList = useCallback(() => {
     dispatch(REQUEST_TODO_LIST()).then((res) => {
       if (res.meta.requestStatus === "rejected") {
@@ -40,6 +54,7 @@ const useTodos = () => {
   return {
     ...state,
     onAdd,
+    onDelete,
     getList,
   };
 };

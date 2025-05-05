@@ -34,3 +34,15 @@ export const REQUEST_TODO_LIST = createAsyncThunk(
     }
   }
 );
+
+export const REQUEST_TODO_DELETE = createAsyncThunk(
+  "todo/delete",
+  async (id: string, { rejectWithValue }) => {
+    try {
+      const response = await REQUEST_LOCAL.delete(API_LOCAL.TODO.DELETE(id));
+      return response.data;
+    } catch (err) {
+      return rejectWithValue(err);
+    }
+  }
+);
