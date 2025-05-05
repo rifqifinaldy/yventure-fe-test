@@ -6,3 +6,9 @@ export const API_LOCAL = {
     UPDATE: (id: string) => `/todo/update/${id}`,
   },
 };
+
+export const API_JSON_PLACEHOLDER = {
+  POST: {
+    LIST: "/posts",
+  },
+};

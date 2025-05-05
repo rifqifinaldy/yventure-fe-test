@@ -2,11 +2,13 @@ import { Action, configureStore, ThunkAction } from "@reduxjs/toolkit";
 
 import { TODO_REDUCER } from "./todos";
 import REDUX_MIDDLEWARE from "./redux.middleware";
+import { POST_REDUCER } from "./posts";
 
 export const store = () => {
   return configureStore({
     reducer: {
       todos: TODO_REDUCER,
+      posts: POST_REDUCER,
     },
     middleware: (getDefaultMiddleware) =>
       getDefaultMiddleware({

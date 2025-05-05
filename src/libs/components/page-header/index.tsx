@@ -9,9 +9,15 @@ interface Props {
 const PageTitle: React.FC<Props> = ({ title, subtitle }) => {
   return (
     <section className={styles.wrapper}>
-      <h1 className={styles.title}>{title}</h1>
-      <h4 className={styles.subtitle}>{subtitle}</h4>
-      <div className={styles.divider} />
+      <h1 data-testid="page-title" className={styles.title}>
+        {title}
+      </h1>
+      {subtitle && (
+        <h4 data-testid="page-subtitle" className={styles.subtitle}>
+          {subtitle}
+        </h4>
+      )}
+      <div data-testid="divider" className={styles.divider} />
     </section>
   );
 };

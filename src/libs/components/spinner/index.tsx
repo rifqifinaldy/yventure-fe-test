@@ -14,7 +14,7 @@ const Spinner: React.FC<Props> = ({ variant = "gray", size = "md" }) => {
     styles[size]
   );
 
-  return <span className={spinnerClass} />;
+  return <span data-testid="spinner" className={spinnerClass} />;
 };
 
 export default Spinner;

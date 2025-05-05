@@ -26,6 +26,7 @@ export default function RootLayout({
       <StoreProvider>
         <body className={`${ubuntu.className}`}>
           <ToastContainer
+            theme="dark"
             closeButton={false}
             style={{
               fontSize: "14px",

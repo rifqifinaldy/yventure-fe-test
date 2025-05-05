@@ -10,7 +10,7 @@ interface Props {
 const EmptyState: React.FC<Props> = ({ title, subtitle }) => {
   return (
     <div className={styles.empty_state}>
-      <FiInbox className={styles.icon} />
+      <FiInbox data-testid="empty-state-icon" className={styles.icon} />
       <div className={styles.message}>{title}</div>
       <div className={styles.sub_message}>{subtitle}</div>
     </div>
