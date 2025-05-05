@@ -17,6 +17,14 @@ const useTodos = () => {
 
   const { handleSuccess, handleError } = useResponse();
 
+  const getList = useCallback(() => {
+    dispatch(REQUEST_TODO_LIST()).then((res) => {
+      if (res.meta.requestStatus === "rejected") {
+        handleError(res.payload.status, res.payload.response.message);
+      }
+    });
+  }, [dispatch, handleError]);
+
   const onAdd = useCallback(
     (payload: ITodoPayload) => {
       dispatch(REQUEST_TODO_ADD(payload)).then((res) => {
@@ -42,14 +50,6 @@ const useTodos = () => {
     },
     [dispatch, handleError, handleSuccess]
   );
-
-  const getList = useCallback(() => {
-    dispatch(REQUEST_TODO_LIST()).then((res) => {
-      if (res.meta.requestStatus === "rejected") {
-        handleError(res.payload.status, res.payload.response.message);
-      }
-    });
-  }, [dispatch, handleError]);
 
   return {
     ...state,

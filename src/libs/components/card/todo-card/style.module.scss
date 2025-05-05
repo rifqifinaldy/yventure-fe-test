@@ -1,0 +1,82 @@
+@use "./theme.scss" as *;
+
+.card_wrapper {
+    background-color: $dark;
+    border: 1px solid $gray;
+    padding: 10px 12px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    position: relative;
+
+    &.active {
+        border: 1px solid $blue;
+        opacity: 0.85;
+        pointer-events: none;
+    }
+
+    .right_content_wrapper {
+        display: flex;
+        gap:20px;
+    }
+
+    .checkbox_wrapper {
+        width: 20px;
+    }
+
+    .content_wrapper {
+        width: fit-content;
+    }
+
+    .action_wrapper {
+        padding: 8px 12px;
+        border-radius: 8px;
+        background-color: $dark;
+        display: flex;
+        gap: 8px;
+
+        @media (max-width: 768px) {
+            flex-direction: column;
+            position: relative;
+            padding: 4px;
+            font-size: 14px;
+            border: 1px solid $gray;
+        }
+
+        > :nth-child(1) {
+            cursor: pointer;
+            color: $red;
+            &:hover {
+                opacity: 0.65;
+            }
+        }
+        > :nth-child(2) {
+            cursor: pointer;
+            color: $blue;
+            &:hover {
+                opacity: 0.65;
+            }
+        }
+        > :nth-child(3) {
+            cursor: pointer;
+            color: $green;
+            &:hover {
+                opacity: 0.65;
+            }
+        }
+    }
+}
+
+
+.update_text {
+    font-size: 10px;
+    margin-bottom: 5px;
+    color: $gray;
+}
+
+.description {
+    font-size: 14px;
+    color: $light;
+}

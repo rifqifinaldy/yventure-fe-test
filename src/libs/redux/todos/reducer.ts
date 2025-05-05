@@ -14,12 +14,14 @@ type ITodoState = {
   create: IReduxState<ITodo | null>;
   list: IReduxState<ITodo[] | []>;
   delete: IReduxState<null | { data: string }>;
+  refetch: boolean;
 };
 
 const initialState: ITodoState = {
   create: { ...reduxState, data: null },
   list: { ...reduxState, data: [] },
   delete: { ...reduxState, data: null },
+  refetch: false,
 };
 
 export const TODO_REDUCER = createReducer(initialState, (builder) => {
