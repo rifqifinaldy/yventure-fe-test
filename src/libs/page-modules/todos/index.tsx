@@ -45,7 +45,7 @@ const TodosPage: React.FC = () => {
           <InputField
             id="task"
             name="task"
-            label="Create Task"
+            label="Create Task / Todo Item"
             inputProps={{
               type: "text",
               required: true,
