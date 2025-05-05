@@ -5,8 +5,8 @@ import axios, {
   InternalAxiosRequestConfig,
 } from "axios";
 
-const AXIOS_INSTANCE = axios.create({
-  baseURL: process.env["NEXT_PUBLIC_BASE_URL"],
+const AXIOS_JSONPLACEHOLDER_INSTANCE = axios.create({
+  baseURL: process.env["NEXT_PUBLIC_JSONPLACEHOLDER"],
 });
 
 const AXIOS_LOCAL_INSTANCE = axios.create({
@@ -56,5 +56,7 @@ const setupInterceptors = (AXIOS_INSTANCE: AxiosInstance): AxiosInstance => {
   return AXIOS_INSTANCE;
 };
 
-export const REQUEST = setupInterceptors(AXIOS_INSTANCE);
+export const REQUEST_JSON_PLACEHOLDER = setupInterceptors(
+  AXIOS_JSONPLACEHOLDER_INSTANCE
+);
 export const REQUEST_LOCAL = setupInterceptors(AXIOS_LOCAL_INSTANCE);

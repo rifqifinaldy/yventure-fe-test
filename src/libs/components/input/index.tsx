@@ -43,7 +43,7 @@ const InputField: React.FC<Props> = ({
           id={id}
           {...register(name)}
           {...inputProps}
-          disabled={isLoading || inputProps?.disabled}
+          disabled={inputProps?.disabled}
           className={inputClass}
         />
         {isLoading && (
